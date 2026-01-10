@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Voiceover Artist Portfolio - Josh Skjold">
+    <title>Josh Skjold | Voiceover Artist</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Variables - Studio Dark Mode */
+        :root {
+            --bg-dark: #121212;
+            --bg-panel: #1a1a1a;
+            --bg-panel-hover: #252525;
+            --text-heading: #ffffff;
+            --text-body: #cfcfcf;
+            --text-muted: #888888;
+            --accent: #2d6cdf;
+            /* Electric Blue variant */
+            --accent-bright: #4b8bf4;
+            --accent-glow: rgba(45, 108, 223, 0.3);
+            --border: #333333;
+
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+
+            --spacing-section: 120px;
+            --container-width: 1100px;
+            --nav-height: 70px;
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode {
+            --bg-dark: #f8f9fa;
+            /* Now light background */
+            --bg-panel: #ffffff;
+            --bg-panel-hover: #f1f1f1;
+            --text-heading: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #666666;
+            --border: #e9ecef;
+            /* Keep accent similar but maybe tweaked if needed, but standard works */
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            /* For absolute toggle */
+            padding-top: var(--nav-height);
+            /* Account for fixed nav */
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 900;
+            /* Below Toggle (1000) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode .navbar {
+            background: rgba(248, 249, 250, 0.85);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-heading);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--text-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: var(--spacing-section) 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .btn-outline {
+            border-color: var(--text-heading);
+            color: var(--text-heading);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-heading);
+            color: var(--bg-dark);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 19px;
+            /* Centered in nav-height 70px approx */
+            right: 20px;
+            z-index: 1000;
+            width: 64px;
+            height: 32px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .theme-toggle {
+            background: white;
+            border-color: #ccc;
+        }
+
+        .toggle-thumb {
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 4px;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        body.light-mode .toggle-thumb {
+            transform: translateX(32px);
+            background-color: #fbbf24;
+            /* Sun color */
+            color: #78350f;
+        }
+
+        .toggle-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        .toggle-bg-icon {
+            width: 14px;
+            height: 14px;
+            color: var(--text-muted);
+            margin: 0 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - var(--nav-height));
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 70% 20%, rgba(30, 37, 48, 0.5) 0%, var(--bg-dark) 60%);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        body.light-mode .hero {
+            background: radial-gradient(circle at 70% 20%, #f0f4ff 0%, var(--bg-dark) 60%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text-heading), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: var(--text-body);
+            max-width: 500px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border: 2px solid var(--accent);
+            opacity: 0.3;
+            z-index: 0;
+            border-radius: 10px;
+            transform: translate(10px, 10px);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            /* Custom Grayscale as requested */
+            filter: grayscale(100%) contrast(110%);
+        }
+
+        /* Bio Section */
+        .bio {
+            background-color: var(--bg-panel);
+            transition: background-color 0.3s ease;
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Demo Section */
+        .demos {
+            background-color: var(--bg-dark);
+        }
+
+        .demo-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .audio-player {
+            background: var(--bg-panel);
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .audio-player:hover {
+            border-color: var(--accent);
+            transform: scale(1.01);
+            background: var(--bg-panel-hover);
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            color: white;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .track-info {
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        .track-title {
+            color: var(--text-heading);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .track-type {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .waveform-container {
+            flex-grow: 1;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-mode .progress-bar {
+            background: #e5e5e5;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            font-variant-numeric: tabular-nums;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            min-width: 45px;
+            text-align: right;
+        }
+
+        /* Experience Section (Redesigned) */
+        .experience {
+            background-color: var(--bg-panel);
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        .vocal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .tag {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .client-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .client-item {
+            color: var(--text-muted);
+            display: inline-block;
+            font-size: 1.1rem;
+            padding-right: 15px;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        /* Add bullet separator via CSS */
+        .client-item:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--accent);
+        }
+
+        .works-list {
+            list-style: none;
+        }
+
+        .work-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+        }
+
+        .work-item h4 {
+            color: var(--text-heading);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .work-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .download-wrapper {
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        /* Logo Wall */
+        .logo-wall {
+            background-color: var(--bg-dark);
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 cols on mobile for compact icons */
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+        }
+
+        @media(min-width: 600px) {
+            .logo-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media(min-width: 900px) {
+            .logo-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        /* Updated Marquee Logic (Vanilla CSS) */
+        .logo-marquee-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .marquee-track-wrapper {
+            position: relative;
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            /* gap is handled by padding in children or margin */
+        }
+
+        .marquee-track {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-shrink: 0;
+            min-width: 100%;
+            /* Ensure it spans full width */
+            gap: 3rem;
+            /* --gap variable from reference */
+
+            animation: marquee 40s linear infinite;
+        }
+
+        /* Pause on hover group */
+        .marquee-track-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(calc(-100% - 3rem));
+            }
+
+            /* Move one full width + gap */
+        }
+
+        /* Gradient Fades */
+        .marquee-fade-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            pointer-events: none;
+            background: linear-gradient(to right, var(--bg-dark), transparent);
+            z-index: 2;
+        }
+
+        .marquee-fade-right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+            pointer-events: none;
+            background: linear-gradient(to left, var(--bg-dark), transparent);
+            z-index: 2;
+        }
+
+        body.light-mode .marquee-fade-left {
+            background: linear-gradient(to right, #f8f9fa, transparent);
+        }
+
+        body.light-mode .marquee-fade-right {
+            background: linear-gradient(to left, #f8f9fa, transparent);
+        }
+
+        /* Logo Wall - User Polish Update */
+        .logo-wall {
+            background-color: #ffffff;
+            /* Light background to hide white image boxes */
+            color: #000;
+            /* Dark text for contrast */
+            padding: 60px 0;
+        }
+
+        /* Override fades for light background */
+        .logo-wall .marquee-fade-left {
+            background: linear-gradient(to right, #ffffff, transparent);
+        }
+
+        .logo-wall .marquee-fade-right {
+            background: linear-gradient(to left, #ffffff, transparent);
+        }
+
+        /* Logos in marquee - Bigger & Colored */
+        .client-logo {
+            width: auto;
+            height: 90px;
+            /* Bigger as requested */
+            min-width: 60px;
+            object-fit: contain;
+
+            /* Full Color & visibility boost */
+            filter: none;
+            opacity: 1;
+
+            /* Magic trick: This removes white backgrounds on images when placed on white bg */
+            mix-blend-mode: multiply;
+
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0 3rem;
+            /* More spacing for bigger logos */
+
+            /* Fallback Font Style */
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: #333;
+            /* Dark text fallback */
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .client-logo:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+            /* Slight pop */
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 80px 0 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Keep footer dark in light mode or not? usually footer stays dark. I'll leave it hardcoded #000 */
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-image-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .audio-player {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .track-info {
+                width: 100%;
+            }
+
+            .waveform-container {
+                width: 100%;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .nav-link {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-menu">
+            <a onclick="showHome()" class="nav-link">Home</a>
+            <a onclick="showDemos()" class="nav-link">Demos</a>
+            <a onclick="showCredits()" class="nav-link">Full Credits</a>
+            <a onclick="showContact()" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+        <!-- Moon icon (bg) - NOW LEFT -->
+        <svg class="toggle-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+
+        <!-- Sun icon (bg) - NOW RIGHT -->
+        <svg class="toggle-bg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+            </path>
+        </svg>
+
+        <!-- Thumb (moving circle) -->
+        <div class="toggle-thumb">
+            <svg class="toggle-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="display: block;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="toggle-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="display: none;">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- HOME VIEW CONTAINER -->
+    <div id="home-view">
+
+        <!-- Hero Section -->
+        <header class="section hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h2>Trained Voiceover Specialist</h2>
+                    <h1>Josh Skjold</h1>
+                    <p>Powerful, Versatile, and Trustworthy Voice for Radio, Film, and Commercial Productions. 25+ Years
+                        of Experience.</p>
+                    <div class="hero-actions">
+                        <button onclick="showDemos()" class="btn btn-primary">Listen Now</button>
+                        <button onclick="showContact()" class="btn btn-outline" style="margin-left: 10px;">Contact
+                            Me</button>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="IMG_0761.jpg" alt="Josh Skjold Voiceover Artist" class="hero-image">
+                </div>
+            </div>
+        </header>
+
+        <!-- Bio Section -->
+        <section class="section bio" id="bio">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="bio-text">
+                    <p>Josh Skjold is a trained voiceover specialist with over 25 years of experience covering a wide
+                        range of services. He has done voice work in radio, educational textbooks, documentary and
+                        promotional film, artistic endeavors, commercial production, and full-length feature film.</p>
+                    <p>Beyond the microphone, Josh is an academic teacher, performing singer, songwriter, and
+                        instrumentalist. He appeared in the major motion picture 'Thr3e' (as Detective Tom) and is a
+                        published creative writer who currently works at the University of Warsaw.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demos Section REMOVED (Moved to own view) -->
+
+        <!-- Experience Section (Teaser) -->
+        <section class="section experience" id="experience">
+            <div class="container">
+                <h2 class="section-title">Voice Range</h2>
+
+                <div class="vocal-tags">
+                    <span class="tag">Mid to Low Range</span>
+                    <span class="tag">Powerful</span>
+                    <span class="tag">Smooth</span>
+                    <span class="tag">Seductive</span>
+                    <span class="tag">Dynamic</span>
+                    <span class="tag">Intense</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logo Wall Section (Marquee) -->
+        <section class="logo-wall">
+            <div class="container">
+                <h3
+                    style="text-align: center; margin-bottom: 50px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem;">
+                    Trusted By</h3>
+
+                <div class="logo-marquee-container">
+                    <div class="marquee-fade-left"></div>
+                    <div class="marquee-fade-right"></div>
+
+                    <div class="marquee-track-wrapper">
+                        <!-- Track 1 -->
+                        <div class="marquee-track">
+                            <img src="3M.png" alt="3M" class="client-logo">
+                            <img src="google-logo.png" alt="Google" class="client-logo">
+                            <img src="logo-ups-kurier.png" alt="UPS" class="client-logo">
+                            <!-- Microsoft Scaled Up -->
+                            <img src="microsoft-logo-microsoft-icon-transparent-free-png.png" alt="Microsoft"
+                                class="client-logo" style="transform: scale(1.9); margin: 0 4rem;">
+                            <img src="McDonald's logo.png" alt="McDonald's" class="client-logo">
+                            <img src="T-Mobile-Logo-2020.png" alt="T-Mobile" class="client-logo">
+                            <img src="BMW-logo-2020.png" alt="BMW" class="client-logo">
+                            <img src="Logo_Toyota.png" alt="Toyota" class="client-logo">
+                            <img src="porsche-logo.png" alt="Porsche" class="client-logo">
+                            <img src="citi.png" alt="Citibank" class="client-logo">
+                            <img src="GE-Symbol.png" alt="GE" class="client-logo">
+                            <img src="Accenture-Logo-2020-present.png" alt="Accenture" class="client-logo">
+                            <img src="Hitachi-Logo.png" alt="Hitachi" class="client-logo">
+                        </div>
+
+                        <!-- Track 2 (Duplicate for Infinite Loop) -->
+                        <div class="marquee-track">
+                            <img src="3M.png" alt="3M" class="client-logo">
+                            <img src="google-logo.png" alt="Google" class="client-logo">
+                            <img src="logo-ups-kurier.png" alt="UPS" class="client-logo">
+                            <!-- Microsoft Scaled Up -->
+                            <img src="microsoft-logo-microsoft-icon-transparent-free-png.png" alt="Microsoft"
+                                class="client-logo" style="transform: scale(1.9); margin: 0 4rem;">
+                            <img src="McDonald's logo.png" alt="McDonald's" class="client-logo">
+                            <img src="T-Mobile-Logo-2020.png" alt="T-Mobile" class="client-logo">
+                            <img src="BMW-logo-2020.png" alt="BMW" class="client-logo">
+                            <img src="Logo_Toyota.png" alt="Toyota" class="client-logo">
+                            <img src="porsche-logo.png" alt="Porsche" class="client-logo">
+                            <img src="citi.png" alt="Citibank" class="client-logo">
+                            <img src="GE-Symbol.png" alt="GE" class="client-logo">
+                            <img src="Accenture-Logo-2020-present.png" alt="Accenture" class="client-logo">
+                            <img src="Hitachi-Logo.png" alt="Hitachi" class="client-logo">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email:</strong> <a href="mailto:Lodzbeat@gmail.com">Lodzbeat@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong> <a href="tel:+48733350123">+48-733-350-123</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <a href="https://www.youtube.com/@joshskjoldprofessionallect836" class="footer-link"
+                        target="_blank">YouTube</a>
+                </div>
+                <p class="copyright">&copy; 2024 Josh Skjold. All rights reserved.</p>
+            </div>
+        </footer>
+    </div> <!-- END HOME VIEW -->
+
+    <!-- DEMOS VIEW CONTAINER -->
+    <div id="demos-view" style="display: none;">
+        <header class="section" style="padding-bottom: 40px; border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom: 10px;">Audio Demos</h2>
+                        <!-- Text removed as requested -->
+                    </div>
+                    <button onclick="showHome()" class="btn btn-outline">Back to Home</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container">
+
+                <!-- Category 1: Commercial -->
+                <div style="margin-bottom: 60px;">
+                    <h3 style="margin-bottom: 30px; color: var(--accent);">Commercial & Promo</h3>
+                    <div class="demo-list">
+                        <!-- Commercial 1 -->
+                        <div class="audio-player" data-src="demo-commercial-main.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Commercial Demo 1</span>
+                                <span class="track-type">Commercial</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <!-- Commercial 2 -->
+                        <div class="audio-player" data-src="Josh-Skjold-demo.1.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Commercial Demo 2</span>
+                                <span class="track-type">Commercial</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <!-- Discovery -->
+                        <div class="audio-player" data-src="demo-commercial-discovery.mp3">
+                            <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Discovery Channel Style</span>
+                                <span class="track-type">Documentary</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <!-- Trailer -->
+                        <div class="audio-player" data-src="Trailer.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Trailer / Promo</span>
+                                <span class="track-type">Promo</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <!-- Upbeat -->
+                        <div class="audio-player" data-src="beat demo.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Upbeat / Rhythm</span>
+                                <span class="track-type">Rhythm</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Character -->
+                <div style="margin-bottom: 60px;">
+                    <h3 style="margin-bottom: 30px; color: var(--accent);">Character</h3>
+                    <div class="demo-list">
+                        <div class="audio-player" data-src="demo-character-deathghost.mp3">
+                            <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Deathghost</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="demo-character-Kurt.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Kurt</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="demo-character-parrot.mp3">
+                            <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">The Parrot</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="demo-character-joe.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Old Joe</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="demo-character-djin.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">The Djinn</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="copdemo.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">The Cop</span>
+                                <span class="track-type">Character</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Audio Books -->
+                <div style="margin-bottom: 60px;">
+                    <h3 style="margin-bottom: 30px; color: var(--accent);">Audio Books</h3>
+                    <div class="demo-list">
+                        <div class="audio-player" data-src="Kidsbookdemo.wav"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Children's Story</span>
+                                <span class="track-type">Audio Book</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="Poe 1-6.wav"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Edgar Allan Poe</span>
+                                <span class="track-type">Audio Book</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="Kevin Chapters 1-4.wav"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Kevin's Corner</span>
+                                <span class="track-type">Audio Book</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Songs-->
+                <div style="margin-bottom: 60px;">
+                    <h3 style="margin-bottom: 30px; color: var(--accent);">Songs</h3>
+                    <div class="demo-list">
+                        <div class="audio-player" data-src="Hideaway Original.mp3"> <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Hideaway</span>
+                                <span class="track-type">Song</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                        <div class="audio-player" data-src="InterContinental - Beyond Nations.mp3">
+                            <!-- User will add file later -->
+                            <button class="play-btn"><svg width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg></button>
+                            <div class="track-info">
+                                <span class="track-title">Beyond Nations</span>
+                                <span class="track-type">Song</span>
+                            </div>
+                            <div class="waveform-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                            <div class="time-display">0:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <button onclick="scrollToSection('contact')" class="btn btn-primary">Contact For Booking</button>
+                </div>
+
+            </div>
+        </section>
+    </div> <!-- END DEMOS VIEW -->
+
+    <!-- EXPERIENCE VIEW CONTAINER -->
+    <div id="experience-view" style="display: none;">
+        <header class="section" style="padding-bottom: 40px; border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom: 10px;">Professional Career Credits</h2>
+                        <p style="color: var(--text-muted);">A comprehensive list of selected clients and works.</p>
+                    </div>
+                    <button onclick="showHome()" class="btn btn-primary">Back to Home</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="section" style="padding-top: 60px;">
+            <div class="container">
+
+                <!-- Section 1: Corporate Clients -->
+                <div style="margin-bottom: 80px;">
+                    <h3
+                        style="margin-bottom: 30px; font-size: 1.8rem; border-left: 4px solid var(--accent); padding-left: 15px;">
+                        Trusted By (Corporate Clients)</h3>
+                    <div class="client-cloud" style="display: flex; flex-wrap: wrap; gap: 12px; line-height: 1.6;">
+                        <!-- Updated list -->
+                        <style>
+                            .cloud-item {
+                                background: var(--bg-panel);
+                                padding: 6px 14px;
+                                border-radius: 4px;
+                                color: var(--text-body);
+                                font-size: 0.95rem;
+                                border: 1px solid transparent;
+                                transition: all 0.2s ease;
+                            }
+
+                            .cloud-item:hover {
+                                border-color: var(--accent);
+                                color: var(--text-heading);
+                                background: var(--bg-panel-hover);
+                            }
+                        </style>
+                        <span class="cloud-item">3M</span>
+                        <span class="cloud-item">Google</span>
+                        <span class="cloud-item">UPS</span>
+                        <span class="cloud-item">Microsoft</span>
+                        <span class="cloud-item">MoneyGram</span>
+                        <span class="cloud-item">McDonald's</span>
+                        <span class="cloud-item">T-Mobile</span>
+                        <span class="cloud-item">Nissan</span>
+                        <span class="cloud-item">Renault</span>
+                        <span class="cloud-item">Hitachi</span>
+                        <span class="cloud-item">KFC</span>
+                        <span class="cloud-item">Wyborowa</span>
+                        <span class="cloud-item">BMW</span>
+                        <span class="cloud-item">Toyota</span>
+                        <span class="cloud-item">Porsche</span>
+                        <span class="cloud-item">Pernod</span>
+                        <span class="cloud-item">Accenture</span>
+                        <span class="cloud-item">Allegro</span>
+                        <span class="cloud-item">Citibank</span>
+                        <span class="cloud-item">Comarch</span>
+                        <span class="cloud-item">Oriflame</span>
+                        <span class="cloud-item">mBank</span>
+                        <span class="cloud-item">Asseco</span>
+                        <span class="cloud-item">Phillips</span>
+                        <span class="cloud-item">Hochland</span>
+                        <span class="cloud-item">Pepco</span>
+                        <span class="cloud-item">Interteam</span>
+                        <span class="cloud-item">Arverse</span>
+                        <span class="cloud-item">Oto Dom</span>
+                        <span class="cloud-item">Zubr Beer</span>
+                        <span class="cloud-item">Skyne</span>
+                        <span class="cloud-item">Lavender Gaming</span>
+                        <span class="cloud-item">Colgate-Palmolive</span>
+                        <span class="cloud-item">General Electric</span>
+                        <span class="cloud-item">CFE Construction</span>
+                        <span class="cloud-item">JIRA Software</span>
+                        <span class="cloud-item">Kotanyi</span>
+                        <span class="cloud-item">Martex</span>
+                        <span class="cloud-item">SAF Holland</span>
+                        <span class="cloud-item">Skynet Worldwide Express Logistics</span>
+                        <span class="cloud-item">Penguin Audiobooks</span>
+                        <span class="cloud-item">4F</span>
+                        <span class="cloud-item">PC Logger</span>
+                        <span class="cloud-item">Polfarma</span>
+                        <span class="cloud-item">Mokate</span>
+                        <span class="cloud-item">Danzer</span>
+                        <span class="cloud-item">Adamed</span>
+                        <span class="cloud-item">MySpiroo</span>
+                        <span class="cloud-item">PGNiC</span>
+                        <span class="cloud-item">Prohair</span>
+                        <span class="cloud-item">Cleeng</span>
+                        <span class="cloud-item">Simplefram</span>
+                        <span class="cloud-item">Henmar</span>
+                        <span class="cloud-item">Slimroast</span>
+                        <span class="cloud-item">Kruto Vodka</span>
+                        <span class="cloud-item">Tauron</span>
+                        <span class="cloud-item">Fraunthal</span>
+                        <span class="cloud-item">SO1</span>
+                        <span class="cloud-item">Euroterminal</span>
+                        <span class="cloud-item">Transparking</span>
+                        <span class="cloud-item">The Eye</span>
+                        <span class="cloud-item">Turgi</span>
+                        <span class="cloud-item">Eurokart</span>
+                        <span class="cloud-item">Voicenet</span>
+                        <span class="cloud-item">Geon</span>
+                        <span class="cloud-item">Comprimo</span>
+                        <span class="cloud-item">Kind Und Urgen</span>
+                        <span class="cloud-item">Lilybut</span>
+                        <span class="cloud-item">Lemonade Studios</span>
+                        <span class="cloud-item">Airsoft</span>
+                        <span class="cloud-item">GeoMining</span>
+                        <span class="cloud-item">Martech</span>
+                        <span class="cloud-item">Biometrics</span>
+                        <span class="cloud-item">Capgemeni</span>
+                        <span class="cloud-item">Mature Filters</span>
+                        <span class="cloud-item">Seni</span>
+                        <span class="cloud-item">Matura Dr. Hair</span>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+
+                    <!-- Section 2: Institutions -->
+                    <div style="margin-bottom: 40px;">
+                        <h3 style="margin-bottom: 20px; font-size: 1.5rem; color: var(--text-heading);">Institutions &
+                            Culture</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                City of Lodz</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                Institute of National Memory (IPN)</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                European Union Educational Fund</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                Warsaw Home Fair</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                FIFA - EURO Cup</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                Lodz Film Institute</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                PBS and Hidden Poland</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                Paris Culture Magazine</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                Cricoteka</li>
+                            <li
+                                style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                WSHE</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 3: Entertainment Media -->
+                    <div style="margin-bottom: 40px;">
+                        <h3 style="margin-bottom: 20px; font-size: 1.5rem; color: var(--text-heading);">Entertainment
+                            Media</h3>
+
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Video Games</h4>
+                            <p class="text-muted">Zodiac Killer, Zombie Apocalypse, Lavender, Liberated, Syberia,
+                                Achilles</p>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Feature Films</h4>
+                            <p class="text-muted">Thr3e (Role: Detective Tom), Mistrz (The Champion), Wladaslaw
+                                Strzeminski (Documentary Voice)</p>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Radio</h4>
+                            <p class="text-muted">DJ for WMCN "Soul and More" (St. Paul, MN), Radio Polonia English
+                                Section</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Section 4: Education & Performance -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="margin-bottom: 20px; font-size: 1.5rem; color: var(--text-heading);">Education &
+                        Performance</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+                            <strong style="display:block; color: var(--text-heading); margin-bottom: 5px;">Academic
+                                Teacher & Writer</strong>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">University of Warsaw</span>
+                        </div>
+                        <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+                            <strong style="display:block; color: var(--text-heading); margin-bottom: 5px;">"Open Mind"
+                                ELT Textbook</strong>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Writer/Editor</span>
+                        </div>
+                        <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+                            <strong
+                                style="display:block; color: var(--text-heading); margin-bottom: 5px;">Songwriter/Performer</strong>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">"Let Your Time Be Now", "Top
+                                Forties Girl", "Lodz To Moje Miasto"</span>
+                        </div>
+                        <div style="background: var(--bg-panel); padding: 20px; border-radius: 8px;">
+                            <strong style="display:block; color: var(--text-heading); margin-bottom: 5px;">Acting/Voice
+                                Training</strong>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Macalester College</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 60px;">
+                    <button onclick="showHome()" class="btn btn-outline" style="min-width: 200px;">Back to Home</button>
+                    <p class="copyright" style="margin-top: 30px;">&copy; 2024 Josh Skjold. All rights reserved.</p>
+                </div>
+
+            </div>
+        </section>
+    </div> <!-- END EXPERIENCE VIEW -->
+
+    <!-- CONTACT VIEW CONTAINER -->
+    <div id="contact-view" style="display: none;">
+        <header class="section" style="padding-bottom: 40px; border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                    <div>
+                        <h2 class="section-title" style="margin-bottom: 10px;">Get in Touch</h2>
+                        <p style="color: var(--text-muted);">Ready to collaborate? Send me a message.</p>
+                    </div>
+                    <button onclick="showHome()" class="btn btn-outline">Back to Home</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container">
+                <style>
+                    .contact-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 60px;
+                        margin-top: 40px;
+                    }
+
+                    @media (max-width: 768px) {
+                        .contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 40px;
+                        }
+                    }
+
+                    .contact-details h3 {
+                        font-size: 1.5rem;
+                        margin-bottom: 20px;
+                        color: var(--text-heading);
+                    }
+
+                    .contact-link-large {
+                        display: block;
+                        font-size: 1.25rem;
+                        color: var(--accent);
+                        margin-bottom: 15px;
+                        text-decoration: none;
+                        transition: color 0.2s;
+                    }
+
+                    .contact-link-large:hover {
+                        color: var(--text-heading);
+                        text-decoration: underline;
+                    }
+
+                    .contact-form-group {
+                        margin-bottom: 20px;
+                    }
+
+                    .contact-label {
+                        display: block;
+                        margin-bottom: 8px;
+                        color: var(--text-body);
+                        font-weight: 500;
+                    }
+
+                    .contact-input,
+                    .contact-textarea,
+                    .contact-select {
+                        width: 100%;
+                        padding: 12px;
+                        background: var(--bg-panel);
+                        border: 1px solid var(--border);
+                        border-radius: 6px;
+                        color: var(--text-heading);
+                        font-family: inherit;
+                        font-size: 1rem;
+                        transition: border-color 0.2s, box-shadow 0.2s;
+                    }
+
+                    .contact-textarea {
+                        resize: vertical;
+                        min-height: 150px;
+                    }
+
+                    .contact-input:focus,
+                    .contact-textarea:focus,
+                    .contact-select:focus {
+                        outline: none;
+                        border-color: var(--accent);
+                        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+                    }
+
+                    /* Light mode overrides for inputs */
+                    .light-mode .contact-input,
+                    .light-mode .contact-textarea,
+                    .light-mode .contact-select {
+                        background: #f9fafb;
+                        border-color: #d1d5db;
+                        color: #111827;
+                    }
+
+                    .light-mode .contact-input:focus,
+                    .light-mode .contact-textarea:focus,
+                    .light-mode .contact-select:focus {
+                        border-color: var(--accent);
+                        background: #ffffff;
+                    }
+                </style>
+
+                <div class="contact-grid">
+                    <!-- Left Column: Info -->
+                    <div class="contact-details">
+                        <h3>Contact Information</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-muted);">
+                            Whether you need a voice for a commercial, audiobook, or animation, I'm available for
+                            projects worldwide.
+                        </p>
+
+                        <div style="margin-bottom: 30px;">
+                            <span
+                                style="display: block; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px;">EMAIL</span>
+                            <a href="mailto:Lodzbeat@gmail.com" class="contact-link-large">Lodzbeat@gmail.com</a>
+                        </div>
+
+                        <div style="margin-bottom: 30px;">
+                            <span
+                                style="display: block; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px;">PHONE</span>
+                            <a href="tel:+48733350123" class="contact-link-large">+48-733-350-123</a>
+                        </div>
+
+                        <div style="margin-top: 40px; padding: 20px; background: var(--bg-panel); border-radius: 8px;">
+                            <h4 style="margin-bottom: 10px;">Studio Availability</h4>
+                            <p style="color: var(--text-muted);">Available for remote recording sessions. Turnaround
+                                time typically 24-48 hours.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Form -->
+                    <div>
+                        <form id="contact-form" action="https://formspree.io/f/mgoowpwz" method="POST">
+                            <div class="contact-form-group">
+                                <label for="name" class="contact-label">Name</label>
+                                <input type="text" id="name" name="name" class="contact-input" placeholder="Your Name"
+                                    required>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label for="email" class="contact-label">Email</label>
+                                <input type="email" id="email" name="email" class="contact-input"
+                                    placeholder="your@email.com" required>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label for="project-type" class="contact-label">Project Type</label>
+                                <select id="project-type" name="project-type" class="contact-select" required>
+                                    <option value="" disabled selected>Select a project type...</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="animation">Character / Animation</option>
+                                    <option value="audiobook">Audiobook</option>
+                                    <option value="narration">Corporate Narration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="contact-form-group">
+                                <label for="message" class="contact-label">Message</label>
+                                <textarea id="message" name="message" class="contact-textarea"
+                                    placeholder="Tell me about your project..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div> <!-- END CONTACT VIEW -->
+
+    <!-- API Logic -->
+    <script>
+        // View Switching Logic
+        function hideAllViews() {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('demos-view').style.display = 'none';
+            document.getElementById('experience-view').style.display = 'none';
+            document.getElementById('contact-view').style.display = 'none';
+            // Also stop audio if playing when switching
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(a => a.pause());
+        }
+
+        function showHome() {
+            hideAllViews();
+            document.getElementById('home-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showDemos() {
+            hideAllViews();
+            document.getElementById('demos-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCredits() {
+            hideAllViews();
+            document.getElementById('experience-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showContact() {
+            hideAllViews();
+            document.getElementById('contact-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle Logic
+            const toggleBtn = document.getElementById('themeToggle');
+            const body = document.body;
+            const iconMoon = document.querySelector('.icon-moon');
+            const iconSun = document.querySelector('.icon-sun');
+
+            // Check saved theme or system preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                showSun();
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                if (body.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    showSun();
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    showMoon();
+                }
+            });
+
+            function showSun() {
+                iconMoon.style.display = 'none';
+                iconSun.style.display = 'block';
+            }
+
+            function showMoon() {
+                iconMoon.style.display = 'block';
+                iconSun.style.display = 'none';
+            }
+
+
+            // Audio Logic (Existing)
+            const players = document.querySelectorAll('.audio-player');
+            let currentAudio = null;
+            let currentBtn = null;
+
+            // Smooth Scroll
+            window.scrollToSection = (id) => {
+                // If in experience view, go home first?
+                if (document.getElementById('home-view').style.display === 'none') {
+                    showHome();
+                    // Give a tiny delay for layout to paint
+                    setTimeout(() => {
+                        const el = document.getElementById(id);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                } else {
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            players.forEach(player => {
+                const src = player.dataset.src;
+                const audio = new Audio(src);
+                const btn = player.querySelector('.play-btn');
+                const progressFill = player.querySelector('.progress-fill');
+                const timeDisplay = player.querySelector('.time-display');
+                const waveformContainer = player.querySelector('.waveform-container');
+
+                let isPlaying = false;
+
+                // Icons
+                const playIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+                const pauseIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+                // Format time helper
+                const formatTime = (seconds) => {
+                    const m = Math.floor(seconds / 60);
+                    const s = Math.floor(seconds % 60);
+                    return `${m}:${s.toString().padStart(2, '0')}`;
+                };
+
+                // Toggle Play/Pause
+                btn.addEventListener('click', () => {
+                    if (isPlaying) {
+                        audio.pause();
+                        isPlaying = false;
+                        btn.innerHTML = playIcon;
+                    } else {
+                        // Stop others
+                        if (currentAudio && currentAudio !== audio) {
+                            currentAudio.pause();
+                            if (currentBtn) currentBtn.innerHTML = playIcon;
+                        }
+
+                        audio.play();
+                        isPlaying = true;
+                        btn.innerHTML = pauseIcon;
+
+                        currentAudio = audio;
+                        currentBtn = btn;
+                    }
+                });
+
+                // Update Progress
+                audio.addEventListener('timeupdate', () => {
+                    if (audio.duration) {
+                        const percent = (audio.currentTime / audio.duration) * 100;
+                        progressFill.style.width = `${percent}%`;
+                        timeDisplay.textContent = formatTime(audio.currentTime);
+                    }
+                });
+
+                // Seek
+                waveformContainer.addEventListener('click', (e) => {
+                    if (!audio.duration) return;
+                    const rect = waveformContainer.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const percent = x / rect.width;
+                    audio.currentTime = percent * audio.duration;
+                });
+
+                // Reset on finish
+                audio.addEventListener('ended', () => {
+                    isPlaying = false;
+                    btn.innerHTML = playIcon;
+                    progressFill.style.width = '0%';
+                    timeDisplay.textContent = '0:00';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
