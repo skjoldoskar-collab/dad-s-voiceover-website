@@ -77,10 +77,11 @@
             left: 0;
             width: 100%;
             height: var(--nav-height);
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 900;
             /* Below Toggle (1000) */
             display: flex;
@@ -369,6 +370,11 @@
             transition: all 0.3s ease;
         }
 
+        .active-track {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
         .audio-player:hover {
             border-color: var(--accent);
             transform: scale(1.01);
@@ -430,7 +436,7 @@
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: #333;
+            background: repeating-linear-gradient(90deg, #333 0px, #333 2px, transparent 2px, transparent 4px);
             border-radius: 4px;
             position: relative;
             /* Removed overflow: hidden so the Playhead dot can be seen */
@@ -615,6 +621,18 @@
             /* --gap variable from reference */
 
             animation: marquee 40s linear infinite;
+        }
+
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         /* Pause on hover group */
@@ -1848,16 +1866,19 @@
                         audio.pause();
                         isPlaying = false;
                         btn.innerHTML = playIcon;
+                        player.classList.remove('active-track');
                     } else {
                         // Stop others
                         if (currentAudio && currentAudio !== audio) {
                             currentAudio.pause();
+                            currentAudio.closest('.audio-player').classList.remove('active-track');
                             if (currentBtn) currentBtn.innerHTML = playIcon;
                         }
 
                         audio.play();
                         isPlaying = true;
                         btn.innerHTML = pauseIcon;
+                        player.classList.add('active-track');
 
                         currentAudio = audio;
                         currentBtn = btn;
@@ -1890,6 +1911,7 @@
                 // Reset on finish
                 audio.addEventListener('ended', () => {
                     isPlaying = false;
+                    player.classList.remove('active-track');
                     btn.innerHTML = playIcon;
                     progressFill.style.width = '0%';
                     timeDisplay.textContent = '0:00';
