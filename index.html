@@ -370,11 +370,6 @@
             transition: all 0.3s ease;
         }
 
-        .active-track {
-            border-color: var(--accent);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
         .audio-player:hover {
             border-color: var(--accent);
             transform: scale(1.01);
@@ -1837,7 +1832,6 @@
             // Audio Logic (Restored from index2.html with Scrubber Fix)
             const players = document.querySelectorAll('.audio-player');
             let currentAudio = null;
-            let currentWrapper = null;
             let currentBtn = null;
 
             players.forEach(player => {
@@ -1865,22 +1859,18 @@
                         // Is playing -> cleaning up
                         audio.pause();
                         btn.innerHTML = playIcon;
-                        player.classList.remove('active-track');
                     } else {
                         // Is paused -> start playing
                         // Stop others first
                         if (currentAudio && currentAudio !== audio) {
                             currentAudio.pause();
-                            if (currentWrapper) currentWrapper.classList.remove('active-track');
                             if (currentBtn) currentBtn.innerHTML = playIcon;
                         }
 
                         audio.play();
                         btn.innerHTML = pauseIcon;
-                        player.classList.add('active-track');
 
                         currentAudio = audio;
-                        currentWrapper = player;
                         currentBtn = btn;
                     }
                 });
@@ -1910,7 +1900,6 @@
 
                 // Reset on finish
                 audio.addEventListener('ended', () => {
-                    player.classList.remove('active-track');
                     btn.innerHTML = playIcon;
                     progressFill.style.width = '0%';
                     timeDisplay.textContent = '0:00';
