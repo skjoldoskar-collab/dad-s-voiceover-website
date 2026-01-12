@@ -1837,6 +1837,7 @@
             // Audio Logic (Restored from index2.html with Scrubber Fix)
             const players = document.querySelectorAll('.audio-player');
             let currentAudio = null;
+            let currentWrapper = null;
             let currentBtn = null;
 
             players.forEach(player => {
@@ -1846,8 +1847,6 @@
                 const progressFill = player.querySelector('.progress-fill');
                 const timeDisplay = player.querySelector('.time-display');
                 const waveformContainer = player.querySelector('.waveform-container');
-
-                let isPlaying = false;
 
                 // Icons
                 const playIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
@@ -1862,25 +1861,26 @@
 
                 // Toggle Play/Pause
                 btn.addEventListener('click', () => {
-                    if (isPlaying) {
+                    if (!audio.paused) {
+                        // Is playing -> cleaning up
                         audio.pause();
-                        isPlaying = false;
                         btn.innerHTML = playIcon;
                         player.classList.remove('active-track');
                     } else {
-                        // Stop others
+                        // Is paused -> start playing
+                        // Stop others first
                         if (currentAudio && currentAudio !== audio) {
                             currentAudio.pause();
-                            currentAudio.closest('.audio-player').classList.remove('active-track');
+                            if (currentWrapper) currentWrapper.classList.remove('active-track');
                             if (currentBtn) currentBtn.innerHTML = playIcon;
                         }
 
                         audio.play();
-                        isPlaying = true;
                         btn.innerHTML = pauseIcon;
                         player.classList.add('active-track');
 
                         currentAudio = audio;
+                        currentWrapper = player;
                         currentBtn = btn;
                     }
                 });
@@ -1910,7 +1910,6 @@
 
                 // Reset on finish
                 audio.addEventListener('ended', () => {
-                    isPlaying = false;
                     player.classList.remove('active-track');
                     btn.innerHTML = playIcon;
                     progressFill.style.width = '0%';
